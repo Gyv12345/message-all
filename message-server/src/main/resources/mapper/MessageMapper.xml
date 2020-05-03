@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yt4j.message.server.dao.MessageDao">
+
+    <resultMap type="cn.yt4j.message.core.model.Message" id="MessageMap">
+        <id property="id" column="id" />
+        <result property="message" column="message"/>
+        <result property="userKey" column="user_key"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <insert id="add">
+        insert into message (message,user_key,slot,create_time,update_time)
+        values (#{message},#{userKey},#{slot},now(),now())
+    </insert>
+    <update id="taskUpdate">
+        update message set slot=slot-1,update_time=now() where slot>0
+    </update>
+    <update id="update">
+
+    </update>
+
+    <select id="list" resultMap="MessageMap">
+        select id,message,user_key,slot,create_time,update_time
+        from message
+        <where>
+            <if test="slot!=null">
+                and slot &lt;=#{slot}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+
+</mapper>
