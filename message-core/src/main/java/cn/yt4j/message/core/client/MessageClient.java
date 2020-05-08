@@ -16,6 +16,6 @@ public interface MessageClient {
      * 没啥说的，发送消息
      * @param message
      */
-    @RequestMapping("message")
+    @RequestMapping("/message/send")
     void send(Message message);
 }

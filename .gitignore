@@ -2,3 +2,4 @@
 .idea
 message-all.iml
 message-server/message-server.iml
+message-core/message-core.iml
