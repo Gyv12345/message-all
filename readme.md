@@ -12,3 +12,6 @@
 {message:""}
 ```
 
+## 感谢
+
+[netty-websocket-spring-boot-starter](https://gitee.com/Yeauty/netty-websocket-spring-boot-starter) 在spring boot的环境下搭了许久，还是直接使用了starter快一点。
